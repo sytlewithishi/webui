@@ -8,6 +8,7 @@ import {
   LocalBusinessJsonLd,
   WebsiteJsonLd,
 } from "@/components/SEO/JsonLd";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -109,6 +110,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <GoogleAnalytics />
       </body>
     </html>
   );
