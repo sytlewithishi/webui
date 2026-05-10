@@ -14,8 +14,8 @@ const inquiryTypes = [
 const contactInfo = [
   {
     title: "Email",
-    value: "hello@stylewithishi.com",
-    href: "mailto:hello@stylewithishi.com",
+    value: "isachdev@stylewithishi.com",
+    href: "mailto:isachdev@stylewithishi.com",
     icon: (
       <svg
         className="w-6 h-6"

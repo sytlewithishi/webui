@@ -58,10 +58,10 @@ export default function PrivacyPage() {
                 footer of every email. You can request a copy or deletion of
                 your personal information by emailing{" "}
                 <a
-                  href="mailto:hello@stylewithishi.com"
+                  href="mailto:isachdev@stylewithishi.com"
                   className="text-primary hover:underline"
                 >
-                  hello@stylewithishi.com
+                  isachdev@stylewithishi.com
                 </a>
                 .
               </p>
@@ -74,10 +74,10 @@ export default function PrivacyPage() {
               <p>
                 Questions about this policy? Email{" "}
                 <a
-                  href="mailto:hello@stylewithishi.com"
+                  href="mailto:isachdev@stylewithishi.com"
                   className="text-primary hover:underline"
                 >
-                  hello@stylewithishi.com
+                  isachdev@stylewithishi.com
                 </a>
                 .
               </p>

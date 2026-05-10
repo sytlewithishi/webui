@@ -46,7 +46,7 @@ export function LocalBusinessJsonLd() {
     url: "https://stylewithishi.com",
     logo: "https://stylewithishi.com/images/logo.png",
     image: "https://stylewithishi.com/images/og-image.jpg",
-    email: "hello@stylewithishi.com",
+    email: "isachdev@stylewithishi.com",
     priceRange: "$$$",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",

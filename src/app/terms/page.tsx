@@ -77,10 +77,10 @@ export default function TermsPage() {
               <p>
                 Questions about these terms? Email{" "}
                 <a
-                  href="mailto:hello@stylewithishi.com"
+                  href="mailto:isachdev@stylewithishi.com"
                   className="text-primary hover:underline"
                 >
-                  hello@stylewithishi.com
+                  isachdev@stylewithishi.com
                 </a>
                 .
               </p>

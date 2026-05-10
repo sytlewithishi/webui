@@ -64,14 +64,6 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "StyleWithIshi",
-    images: [
-      {
-        url: "/images/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "StyleWithIshi — Globally Curated Fashion by Ishi",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -80,7 +72,6 @@ export const metadata: Metadata = {
       "Independent designers from around the world, curated by Ishi. Two decades of curation, now with a private collection.",
     site: "@stylewithishi",
     creator: "@stylewithishi",
-    images: ["/images/og-image.jpg"],
   },
   robots: {
     index: true,

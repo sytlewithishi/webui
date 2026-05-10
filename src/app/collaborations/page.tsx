@@ -155,7 +155,7 @@ export default function CollaborationsPage() {
             </p>
             <div className="mt-8">
               <a
-                href="mailto:collaborations@stylewithishi.com?subject=Media%20kit%20request"
+                href="mailto:isachdev@stylewithishi.com?subject=Media%20kit%20request"
                 className="btn btn-primary"
               >
                 Request the Media Kit
@@ -246,7 +246,7 @@ export default function CollaborationsPage() {
                     </li>
                   </ul>
                   <a
-                    href="mailto:collaborations@stylewithishi.com?subject=Media%20kit%20request"
+                    href="mailto:isachdev@stylewithishi.com?subject=Media%20kit%20request"
                     className="mt-6 btn btn-primary inline-flex"
                   >
                     Request the Media Kit
@@ -297,7 +297,7 @@ export default function CollaborationsPage() {
                 Send an Inquiry
               </Link>
               <a
-                href="mailto:collaborations@stylewithishi.com"
+                href="mailto:isachdev@stylewithishi.com"
                 className="btn border-2 border-white text-white hover:bg-white/10"
               >
                 Email Directly

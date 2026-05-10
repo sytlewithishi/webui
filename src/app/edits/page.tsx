@@ -5,6 +5,22 @@ import { edits } from "@/lib/edits";
 import { thumbUrl } from "@/lib/youtube";
 import EmailSignupForm from "@/components/forms/EmailSignupForm";
 
+const editsItemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "The Edits — by StyleWithIshi",
+  description:
+    "Mood- and occasion-based curations by Ishi, drawn from independent designers around the world.",
+  url: "https://stylewithishi.com/edits",
+  numberOfItems: edits.length,
+  itemListElement: edits.map((edit, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: edit.title,
+    description: edit.blurb,
+  })),
+};
+
 export const metadata: Metadata = {
   title: "The Edits — By Mood, Occasion, and Hand",
   description:
@@ -26,6 +42,10 @@ export const metadata: Metadata = {
 export default function EditsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(editsItemList) }}
+      />
       <section className="section gradient-warm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
