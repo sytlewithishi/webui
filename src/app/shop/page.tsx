@@ -57,8 +57,10 @@ export default function ShopPage() {
             </h1>
             <p className="mt-6 text-lg text-text-light leading-relaxed">
               Independent designers, personally curated across the globe.
-              The first drop launches by invitation. Join the waitlist for
-              priority access.
+              The first drop — from{" "}
+              <span className="text-primary font-medium">Colombia</span> and{" "}
+              <span className="text-primary font-medium">India</span> —
+              arrives this summer. Join the waitlist for priority access.
             </p>
 
             <div className="mt-10 max-w-lg mx-auto">
@@ -72,6 +74,41 @@ export default function ShopPage() {
               <p className="text-xs text-muted mt-3">
                 Priority access · No spam · Unsubscribe anytime
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 md:py-20 bg-surface border-y border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-3">
+              The First Drop · Summer 2026
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text font-[family-name:var(--font-playfair)] leading-tight">
+              Sourced from{" "}
+              <span className="text-primary italic">Colombia</span> and{" "}
+              <span className="text-primary italic">India</span>
+            </h2>
+            <p className="mt-6 text-text-light leading-relaxed text-lg">
+              Two regions long on my radar — both with deep made-by-hand
+              traditions and a generation of designers redefining what comes
+              next. The first Collection drop arrives this summer. The
+              waitlist gets first word.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-x-12 gap-y-4 text-sm">
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 bg-gold rounded-full" />
+                <span className="text-text-light">
+                  Colombia · independent ateliers
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 bg-gold rounded-full" />
+                <span className="text-text-light">
+                  India · contemporary craft houses
+                </span>
+              </div>
             </div>
           </div>
         </div>
