@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const KIT_BASE = "https://api.kit.com/v4";
 
 export async function POST(req: NextRequest) {
   let body: { email?: unknown; source?: unknown };
@@ -28,25 +29,59 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, queued: true });
   }
 
+  const headers = {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    "X-Kit-Api-Key": KIT_API_KEY,
+  };
+
   try {
-    const res = await fetch(
-      `https://api.kit.com/v4/forms/${KIT_FORM_ID}/subscribers`,
+    // Step 1: create-or-update the subscriber.
+    // Kit v4 returns 201 for new, 200 for existing-and-updated.
+    const createRes = await fetch(`${KIT_BASE}/subscribers`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        email_address: email,
+        state: "active",
+      }),
+    });
+
+    if (!createRes.ok) {
+      const text = await createRes.text();
+      console.error(
+        "[subscribe] Kit create-subscriber error",
+        createRes.status,
+        text
+      );
+      return NextResponse.json(
+        { error: "Subscription failed. Please try again." },
+        { status: 502 }
+      );
+    }
+
+    // Step 2: add the subscriber to the waitlist form.
+    // Form endpoint requires the subscriber to exist (Step 1 ensures that).
+    // The `referrer` field is how Kit attributes the source per its v4 spec.
+    const formRes = await fetch(
+      `${KIT_BASE}/forms/${KIT_FORM_ID}/subscribers`,
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Kit-Api-Key": KIT_API_KEY,
-        },
+        headers,
         body: JSON.stringify({
           email_address: email,
-          fields: { source },
+          referrer: source,
         }),
       }
     );
 
-    if (!res.ok) {
-      const text = await res.text();
-      console.error("[subscribe] Kit error", res.status, text);
+    if (!formRes.ok) {
+      const text = await formRes.text();
+      console.error(
+        "[subscribe] Kit form-add error",
+        formRes.status,
+        text
+      );
       return NextResponse.json(
         { error: "Subscription failed. Please try again." },
         { status: 502 }
