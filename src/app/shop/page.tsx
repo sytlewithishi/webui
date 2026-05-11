@@ -20,6 +20,23 @@ export const metadata: Metadata = {
   },
 };
 
+type PreviewTile = {
+  origin: "Colombia" | "India";
+  material: string;
+  note: string;
+};
+
+const previewTiles: PreviewTile[] = [
+  { origin: "Colombia", material: "Linen", note: "Hand-loomed" },
+  { origin: "Colombia", material: "Leather", note: "Sustainably sourced" },
+  { origin: "Colombia", material: "Knit", note: "Andean wool" },
+  { origin: "Colombia", material: "Cotton", note: "Tailored cut" },
+  { origin: "India", material: "Silk", note: "Block-printed" },
+  { origin: "India", material: "Cotton", note: "Jamdani weave" },
+  { origin: "India", material: "Embroidery", note: "Hand-stitched" },
+  { origin: "India", material: "Jewelry", note: "Artisan-made" },
+];
+
 const expectations = [
   {
     title: "Drop-based",
@@ -111,6 +128,80 @@ export default function ShopPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Preview tiles — what's coming */}
+      <section className="section bg-background-alt">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-3">
+              A First Look
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text font-[family-name:var(--font-playfair)] leading-tight">
+              Pieces coming{" "}
+              <span className="text-primary italic">this summer</span>
+            </h2>
+            <p className="mt-6 text-text-light leading-relaxed">
+              Hints of what&apos;s in the first drop. Quantities are small.
+              The pieces themselves only reveal in full to the waitlist.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5 max-w-5xl mx-auto">
+            {previewTiles.map((tile, i) => (
+              <div
+                key={i}
+                className="relative aspect-[4/5] rounded-xl overflow-hidden border border-border/60 bg-background-alt group"
+                aria-label={`${tile.material} from ${tile.origin}, coming this summer`}
+              >
+                <div
+                  className={`absolute inset-0 ${
+                    tile.origin === "Colombia"
+                      ? "bg-gradient-to-br from-accent/15 via-background-alt to-secondary/15"
+                      : "bg-gradient-to-br from-gold/20 via-background-alt to-secondary/20"
+                  }`}
+                />
+
+                <div className="absolute inset-0 p-5 flex flex-col justify-between">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-muted">
+                    {tile.origin}
+                  </p>
+                  <div>
+                    <p className="text-2xl md:text-3xl italic font-[family-name:var(--font-playfair)] text-text/55 leading-tight">
+                      {tile.material}
+                    </p>
+                    <p className="text-[11px] text-muted/90 mt-1.5">
+                      {tile.note}
+                    </p>
+                  </div>
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-muted/70">
+                    Drop 01 · Summer
+                  </p>
+                </div>
+
+                <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-text/10 backdrop-blur-sm flex items-center justify-center text-text/50 group-hover:bg-text/20 transition-colors">
+                  <svg
+                    className="w-3 h-3"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.8}
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-10 text-center text-xs uppercase tracking-[0.25em] text-muted">
+            Reveal in full to the waitlist · Summer 2026
+          </p>
         </div>
       </section>
 

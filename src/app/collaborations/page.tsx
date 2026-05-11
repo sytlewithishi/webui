@@ -4,14 +4,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Collaborations | StyleWithIshi",
   description:
-    "Explore brand partnerships, press features, and collaboration opportunities with StyleWithIshi.",
+    "Past partnerships, editorial features, and collaboration opportunities with StyleWithIshi. For brands, publications, and media.",
 };
 
 const collaborationTypes = [
   {
     title: "Brand Partnerships",
     description:
-      "Partner with StyleWithIshi for authentic fashion content, product styling, and brand ambassador opportunities.",
+      "Authentic content, product styling, ambassador work, and campaigns with brands whose values align with the curation.",
     icon: (
       <svg
         className="w-8 h-8"
@@ -29,9 +29,9 @@ const collaborationTypes = [
     ),
   },
   {
-    title: "Content Creation",
+    title: "Editorial & Content",
     description:
-      "From Instagram Reels to YouTube videos, create engaging fashion content that resonates with your target audience.",
+      "Long-form video, Instagram Reels, TikTok features, and short-form styling content built for the channels your audience actually watches.",
     icon: (
       <svg
         className="w-8 h-8"
@@ -51,7 +51,7 @@ const collaborationTypes = [
   {
     title: "Events & Workshops",
     description:
-      "Host styling workshops, attend fashion events, or bring unique styling experiences to your customers.",
+      "Styling workshops, in-store events, panel appearances, and pop-up curation experiences for retail, hospitality, and brand teams.",
     icon: (
       <svg
         className="w-8 h-8"
@@ -71,7 +71,7 @@ const collaborationTypes = [
   {
     title: "Press & Media",
     description:
-      "Available for interviews, expert commentary, and media appearances on fashion and style topics.",
+      "Interviews, expert commentary, podcast guesting, and editorial features on fashion, curation, and global design.",
     icon: (
       <svg
         className="w-8 h-8"
@@ -90,22 +90,34 @@ const collaborationTypes = [
   },
 ];
 
+type PastCollaboration = {
+  name: string;
+  type: string;
+  year?: string;
+  description?: string;
+};
+
+// Populate with real brand/designer names. Examples of `type`:
+// "Brand Partnership", "Editorial", "Workshop", "Ambassador", "Podcast", "Press Feature".
+const pastCollaborations: PastCollaboration[] = [];
+
 export default function CollaborationsPage() {
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="section gradient-warm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <p className="text-secondary font-medium tracking-wide uppercase text-sm mb-2">
+            <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-3">
               Work Together
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text font-[family-name:var(--font-playfair)]">
-              Let&apos;s <span className="text-primary">Collaborate</span>
+              Let&apos;s{" "}
+              <span className="text-primary italic">Collaborate</span>
             </h1>
-            <p className="mt-6 text-lg text-text-light">
-              Partner with StyleWithIshi to create authentic fashion content,
-              host events, or bring expert styling to your brand.
+            <p className="mt-6 text-lg text-text-light leading-relaxed">
+              Brand partnerships, editorial content, events, and press —
+              built on two decades of fashion curation across the globe.
             </p>
           </div>
         </div>
@@ -115,8 +127,12 @@ export default function CollaborationsPage() {
       <section className="section bg-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
+            <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-2">
+              Ways to Work Together
+            </p>
             <h2 className="text-3xl md:text-4xl font-bold text-text font-[family-name:var(--font-playfair)]">
-              Ways to <span className="text-primary">Work Together</span>
+              What we can{" "}
+              <span className="text-primary italic">build together</span>
             </h2>
           </div>
 
@@ -129,121 +145,116 @@ export default function CollaborationsPage() {
                 <h3 className="mt-4 text-xl font-semibold text-text font-[family-name:var(--font-playfair)]">
                   {type.title}
                 </h3>
-                <p className="mt-2 text-text-light">{type.description}</p>
+                <p className="mt-2 text-text-light leading-relaxed">
+                  {type.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Selected Work */}
+      {/* Past Collaborations */}
       <section className="section gradient-warm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-3">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-2">
               Portfolio
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-text font-[family-name:var(--font-playfair)]">
-              Selected work,{" "}
-              <span className="text-primary italic">on request</span>
+              Selected{" "}
+              <span className="text-primary italic">past collaborations</span>
             </h2>
-            <p className="mt-6 text-text-light leading-relaxed">
-              Past brand partnerships, editorial features, and styling work
-              are shared discreetly with serious inquiries — same way the
-              Collection is curated. Email for a media kit with case studies,
-              audience metrics, and rate card.
-            </p>
-            <div className="mt-8">
-              <a
-                href="mailto:isachdev@stylewithishi.com?subject=Media%20kit%20request"
-                className="btn btn-primary"
-              >
-                Request the Media Kit
-              </a>
-            </div>
           </div>
+
+          {pastCollaborations.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {pastCollaborations.map((collab, index) => (
+                <div key={index} className="card p-6">
+                  <div className="h-16 bg-muted/10 rounded-lg flex items-center justify-center mb-4">
+                    <span className="text-text font-semibold font-[family-name:var(--font-playfair)] text-lg">
+                      {collab.name}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
+                      {collab.type}
+                    </span>
+                    {collab.year && (
+                      <span className="text-xs text-muted">{collab.year}</span>
+                    )}
+                  </div>
+                  {collab.description && (
+                    <p className="mt-3 text-text-light text-sm leading-relaxed">
+                      {collab.description}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="max-w-2xl mx-auto text-center">
+              <p className="text-text-light leading-relaxed">
+                A full list of past brand partnerships, editorial features,
+                and styling work is available in the media kit — shared with
+                serious inquiries.
+              </p>
+              <div className="mt-8">
+                <a
+                  href="mailto:isachdev@stylewithishi.com?subject=Media%20kit%20request"
+                  className="btn btn-primary"
+                >
+                  Request the Media Kit
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Press Kit Section */}
+      {/* Press & Media Kit */}
       <section className="section bg-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="card p-8 md:p-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
+                  <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-3">
+                    For Press
+                  </p>
                   <h2 className="text-2xl md:text-3xl font-bold text-text font-[family-name:var(--font-playfair)]">
                     Press & Media Kit
                   </h2>
-                  <p className="mt-4 text-text-light">
-                    Download our press kit for high-resolution images, bio, and
-                    brand information.
+                  <p className="mt-4 text-text-light leading-relaxed">
+                    Includes high-resolution photography, professional bio,
+                    brand guidelines, social media metrics, and a full list of
+                    past collaborations and editorial features.
                   </p>
                   <ul className="mt-6 space-y-2 text-sm text-text-light">
-                    <li className="flex items-center">
-                      <svg
-                        className="w-4 h-4 text-accent mr-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      High-resolution photos
-                    </li>
-                    <li className="flex items-center">
-                      <svg
-                        className="w-4 h-4 text-accent mr-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      Professional bio
-                    </li>
-                    <li className="flex items-center">
-                      <svg
-                        className="w-4 h-4 text-accent mr-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      Brand guidelines
-                    </li>
-                    <li className="flex items-center">
-                      <svg
-                        className="w-4 h-4 text-accent mr-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      Social media stats
-                    </li>
+                    {[
+                      "High-resolution photography",
+                      "Professional bio",
+                      "Brand guidelines",
+                      "Social media metrics",
+                      "Full collaboration history",
+                    ].map((item) => (
+                      <li key={item} className="flex items-center">
+                        <svg
+                          className="w-4 h-4 text-accent mr-2 flex-shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                   <a
                     href="mailto:isachdev@stylewithishi.com?subject=Media%20kit%20request"
@@ -278,16 +289,16 @@ export default function CollaborationsPage() {
         </div>
       </section>
 
-      {/* Inquiry Form CTA */}
+      {/* Inquiry CTA */}
       <section className="section gradient-accent text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-playfair)]">
-              Interested in Working Together?
+              Interested in working together?
             </h2>
             <p className="mt-4 text-white/90 text-lg">
-              I&apos;d love to hear about your project or partnership ideas.
-              Let&apos;s create something amazing together.
+              Tell me about your project or partnership idea — let&apos;s
+              create something.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Link

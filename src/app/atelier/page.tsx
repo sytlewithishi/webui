@@ -91,6 +91,89 @@ export default function AtelierPage() {
         </div>
       </section>
 
+      {/* Where the curation lives — Medellín + Mumbai */}
+      <section className="bg-background-alt overflow-hidden">
+        <div className="text-center py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+          <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-3">
+            Where the curation lives
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text font-[family-name:var(--font-playfair)] leading-tight max-w-3xl mx-auto">
+            Two cities. The{" "}
+            <span className="text-primary italic">first chapter</span>.
+          </h2>
+          <p className="mt-6 text-text-light text-lg leading-relaxed max-w-2xl mx-auto">
+            The Collection&apos;s first drop is sourced from these two cities
+            — the current chapter in two decades of finding.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* Medellín */}
+          <article className="relative bg-gradient-to-br from-[#3d5a3d] via-[#6B8E23] to-[#A0522D] text-background p-12 md:p-16 lg:p-20 min-h-[600px] flex flex-col justify-between overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/30 rounded-full blur-3xl -translate-x-1/2 translate-y-1/3 pointer-events-none" />
+            <div className="relative">
+              <p className="font-medium tracking-[0.25em] uppercase text-xs mb-5 text-gold-light">
+                Colombia
+              </p>
+              <h3 className="text-6xl md:text-7xl lg:text-8xl font-bold font-[family-name:var(--font-playfair)] leading-[0.95]">
+                Medellín
+              </h3>
+              <p className="mt-4 text-xl md:text-2xl italic font-[family-name:var(--font-playfair)] text-gold-light">
+                City of Eternal Spring
+              </p>
+            </div>
+            <div className="relative mt-12 space-y-5 leading-relaxed text-background/90">
+              <p className="text-base md:text-lg">
+                One of Latin America&apos;s most active fashion hubs — a wave
+                of independent designers in Poblado and Laureles working with
+                hand-loomed textiles, sustainable leather, and a colour
+                palette borrowed from the mountains.
+              </p>
+              <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs uppercase tracking-[0.25em] text-gold-light pt-4 border-t border-background/20">
+                <span>Emerald</span>
+                <span className="text-background/40">·</span>
+                <span>Terracotta</span>
+                <span className="text-background/40">·</span>
+                <span>Mountain Green</span>
+              </div>
+            </div>
+          </article>
+
+          {/* Mumbai */}
+          <article className="relative bg-gradient-to-br from-[#A8871F] via-[#D2691E] to-[#8B4513] text-background p-12 md:p-16 lg:p-20 min-h-[600px] flex flex-col justify-between overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gold/30 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-secondary/40 rounded-full blur-3xl -translate-x-1/2 translate-y-1/3 pointer-events-none" />
+            <div className="relative">
+              <p className="font-medium tracking-[0.25em] uppercase text-xs mb-5 text-gold-light">
+                India
+              </p>
+              <h3 className="text-6xl md:text-7xl lg:text-8xl font-bold font-[family-name:var(--font-playfair)] leading-[0.95]">
+                Mumbai
+              </h3>
+              <p className="mt-4 text-xl md:text-2xl italic font-[family-name:var(--font-playfair)] text-gold-light">
+                Maximum City
+              </p>
+            </div>
+            <div className="relative mt-12 space-y-5 leading-relaxed text-background/90">
+              <p className="text-base md:text-lg">
+                India&apos;s fashion capital — heritage textile houses share
+                blocks with a new generation of designers. Hand-block
+                printing, jamdani weaving, and global brands built out of
+                Bandra studios.
+              </p>
+              <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs uppercase tracking-[0.25em] text-gold-light pt-4 border-t border-background/20">
+                <span>Saffron</span>
+                <span className="text-background/40">·</span>
+                <span>Indigo</span>
+                <span className="text-background/40">·</span>
+                <span>Gold</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section className="section gradient-warm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
