@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -95,11 +96,69 @@ type PastCollaboration = {
   type: string;
   year?: string;
   description?: string;
+  // Path under /public, e.g. "/images/brands/halara.svg". Falls back to brand name text when absent.
+  logo?: string;
 };
 
 // Populate with real brand/designer names. Examples of `type`:
 // "Brand Partnership", "Editorial", "Workshop", "Ambassador", "Podcast", "Press Feature".
-const pastCollaborations: PastCollaboration[] = [];
+const pastCollaborations: PastCollaboration[] = [
+  { name: "GH-Trends", type: "Brand Partnership" },
+  { name: "SideFeel Clothing", type: "Brand Partnership" },
+  { name: "Caralane Global", type: "Brand Partnership" },
+  { name: "Pumiey", type: "Brand Partnership" },
+  { name: "Evaless", type: "Brand Partnership" },
+  { name: "Joopita Jewelry", type: "Brand Partnership" },
+  { name: "Ana Luisa Jewelry", type: "Brand Partnership", logo: "/images/brands/ana-luisa.png" },
+  { name: "NewBella Shoes", type: "Brand Partnership" },
+  { name: "Bella Barnett", type: "Brand Partnership" },
+  { name: "BeeKind", type: "Brand Partnership" },
+  { name: "Loveandcrafted", type: "Brand Partnership" },
+  { name: "Flaxmaker", type: "Brand Partnership", description: "Apparel and swimwear collaborations." },
+  { name: "Alcea Rosea", type: "Brand Partnership" },
+  { name: "Halara", type: "Brand Partnership", logo: "/images/brands/halara.png" },
+  { name: "Italo Jewelry", type: "Brand Partnership", logo: "/images/brands/italo.png" },
+  { name: "Afitne", type: "Brand Partnership" },
+  { name: "Arach & Cloz", type: "Brand Partnership" },
+  { name: "StyleWe", type: "Brand Partnership" },
+  { name: "Bsubseach", type: "Brand Partnership", description: "Cover-ups collaboration.", logo: "/images/brands/bsubseach.png" },
+  { name: "Joyshaper", type: "Brand Partnership", logo: "/images/brands/joyshaper.png" },
+  { name: "Berlook", type: "Brand Partnership", logo: "/images/brands/berlook.png" },
+  { name: "Retro Stage", type: "Brand Partnership" },
+  { name: "Celina Gems", type: "Brand Partnership" },
+  { name: "Darong", type: "Brand Partnership" },
+  { name: "Bestyle", type: "Brand Partnership", description: "Crystal necklace collaboration." },
+  { name: "Totatuit", type: "Brand Partnership" },
+  { name: "VVCloth", type: "Brand Partnership", logo: "/images/brands/vvcloth.jpg" },
+  { name: "Rihoas", type: "Brand Partnership", logo: "/images/brands/rihoas.jpg" },
+  { name: "Cupshe", type: "Brand Partnership", logo: "/images/brands/cupshe.png" },
+  { name: "MaH", type: "Brand Partnership", description: "Backpacks and bags collaboration." },
+  { name: "Fur Institute of Canada", type: "Ambassador", logo: "/images/brands/fur-institute-of-canada.png" },
+  { name: "Sunzel", type: "Brand Partnership", description: "Sport and yoga apparel collaboration." },
+  { name: "Verano Hill", type: "Brand Partnership" },
+  { name: "Magnewear", type: "Brand Partnership", description: "Sunglasses collaboration.", logo: "/images/brands/magnewear.png" },
+  { name: "Lucky Bear & Co.", type: "Brand Partnership", logo: "/images/brands/lucky-bear-and-co.png" },
+  { name: "Liwisi", type: "Brand Partnership", logo: "/images/brands/liwisi.png" },
+];
+
+function BrandTile({ collab }: { collab: PastCollaboration }) {
+  return (
+    <div className="flex items-center gap-3 px-2 py-2">
+      {collab.logo && (
+        <Image
+          src={collab.logo}
+          alt=""
+          width={56}
+          height={56}
+          className="h-10 w-10 shrink-0 object-contain"
+        />
+      )}
+      <span className="whitespace-nowrap text-lg italic text-text-light font-[family-name:var(--font-playfair)]">
+        {collab.name}
+      </span>
+    </div>
+  );
+}
 
 export default function CollaborationsPage() {
   return (
@@ -168,28 +227,9 @@ export default function CollaborationsPage() {
           </div>
 
           {pastCollaborations.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {pastCollaborations.map((collab, index) => (
-                <div key={index} className="card p-6">
-                  <div className="h-16 bg-muted/10 rounded-lg flex items-center justify-center mb-4">
-                    <span className="text-text font-semibold font-[family-name:var(--font-playfair)] text-lg">
-                      {collab.name}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
-                      {collab.type}
-                    </span>
-                    {collab.year && (
-                      <span className="text-xs text-muted">{collab.year}</span>
-                    )}
-                  </div>
-                  {collab.description && (
-                    <p className="mt-3 text-text-light text-sm leading-relaxed">
-                      {collab.description}
-                    </p>
-                  )}
-                </div>
+            <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-8 gap-y-6">
+              {pastCollaborations.map((collab, i) => (
+                <BrandTile key={i} collab={collab} />
               ))}
             </div>
           ) : (
