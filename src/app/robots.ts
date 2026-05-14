@@ -2,28 +2,34 @@ import { MetadataRoute } from "next";
 
 const BASE_URL = "https://stylewithishi.com";
 
+// Allowed by default (under "*"): AI search bots that cite live sources in
+// answers (OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User) and
+// social link-preview fetchers (FacebookBot, Meta-ExternalFetcher). These are
+// what make the site appear in ChatGPT/Claude/Perplexity answers and render
+// rich previews on social shares.
+//
+// Blocked below: AI *training* crawlers (no consent to feed models) and
+// commercial SEO scrapers (sell our data to competitors, no value to us).
+
 const aiTrainingBots = [
   "GPTBot",
-  "ChatGPT-User",
-  "OAI-SearchBot",
-  "Google-Extended",
   "anthropic-ai",
   "ClaudeBot",
-  "Claude-Web",
+  "Google-Extended",
   "CCBot",
-  "PerplexityBot",
-  "Perplexity-User",
   "Bytespider",
   "Applebot-Extended",
   "Amazonbot",
   "cohere-ai",
   "Diffbot",
-  "FacebookBot",
   "Meta-ExternalAgent",
-  "Meta-ExternalFetcher",
-  "ImagesiftBot",
-  "Omgilibot",
-  "Omgili",
+];
+
+const seoScrapers = [
+  "AhrefsBot",
+  "MJ12bot",
+  "DotBot",
+  "SemrushBot",
   "DataForSeoBot",
   "magpie-crawler",
   "AwarioRssBot",
@@ -31,12 +37,11 @@ const aiTrainingBots = [
   "AwarioBot",
   "PiplBot",
   "PetalBot",
+  "ImagesiftBot",
+  "Omgilibot",
+  "Omgili",
   "Scrapy",
   "scrapy",
-  "AhrefsBot",
-  "MJ12bot",
-  "DotBot",
-  "SemrushBot",
 ];
 
 export default function robots(): MetadataRoute.Robots {
@@ -48,6 +53,10 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/private/", "/_next/", "/admin/"],
       },
       ...aiTrainingBots.map((bot) => ({
+        userAgent: bot,
+        disallow: "/",
+      })),
+      ...seoScrapers.map((bot) => ({
         userAgent: bot,
         disallow: "/",
       })),

@@ -1,6 +1,48 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV !== "production";
+
+// Loosened in dev so HMR (websockets, eval'd source maps) still works.
+const cspDirectives: Record<string, string[]> = {
+  "default-src": ["'self'"],
+  "script-src": [
+    "'self'",
+    "'unsafe-inline'",
+    ...(isDev ? ["'unsafe-eval'"] : []),
+    "https://www.googletagmanager.com",
+    "https://www.google-analytics.com",
+  ],
+  "style-src": ["'self'", "'unsafe-inline'"],
+  "img-src": ["'self'", "data:", "blob:", "https:"],
+  "font-src": ["'self'", "data:"],
+  "connect-src": [
+    "'self'",
+    "https://www.google-analytics.com",
+    "https://*.google-analytics.com",
+    "https://www.googletagmanager.com",
+    ...(isDev ? ["ws:", "wss:"] : []),
+  ],
+  "frame-src": [
+    "https://www.youtube.com",
+    "https://www.youtube-nocookie.com",
+    "https://www.tiktok.com",
+  ],
+  "frame-ancestors": ["'self'"],
+  "object-src": ["'none'"],
+  "base-uri": ["'self'"],
+  "form-action": ["'self'"],
+};
+
+const csp =
+  Object.entries(cspDirectives)
+    .map(([k, v]) => `${k} ${v.join(" ")}`)
+    .join("; ") + (isDev ? "" : "; upgrade-insecure-requests");
+
 const securityHeaders = [
+  {
+    key: "Content-Security-Policy",
+    value: csp,
+  },
   {
     key: "Strict-Transport-Security",
     value: "max-age=63072000; includeSubDomains; preload",

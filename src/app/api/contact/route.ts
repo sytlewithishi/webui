@@ -8,11 +8,19 @@ export async function POST(req: NextRequest) {
     email?: unknown;
     inquiryType?: unknown;
     message?: unknown;
+    website?: unknown;
   };
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+
+  // Honeypot: real users never see/fill `website`. Bots auto-fill all fields.
+  // Silently 200 so the bot thinks it succeeded.
+  const honeypot = typeof body.website === "string" ? body.website.trim() : "";
+  if (honeypot) {
+    return NextResponse.json({ ok: true });
   }
 
   const name = typeof body.name === "string" ? body.name.trim() : "";

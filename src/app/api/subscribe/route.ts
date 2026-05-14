@@ -4,11 +4,17 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const KIT_BASE = "https://api.kit.com/v4";
 
 export async function POST(req: NextRequest) {
-  let body: { email?: unknown; source?: unknown };
+  let body: { email?: unknown; source?: unknown; website?: unknown };
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+
+  // Honeypot: real users never see/fill `website`. Silently 200 for bots.
+  const honeypot = typeof body.website === "string" ? body.website.trim() : "";
+  if (honeypot) {
+    return NextResponse.json({ ok: true });
   }
 
   const email = typeof body.email === "string" ? body.email.trim() : "";

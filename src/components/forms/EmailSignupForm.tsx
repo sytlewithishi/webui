@@ -20,6 +20,7 @@ export default function EmailSignupForm({
   size = "default",
 }: Props) {
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
@@ -33,7 +34,7 @@ export default function EmailSignupForm({
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source }),
+        body: JSON.stringify({ email, source, website }),
       });
       if (!res.ok) {
         const data = (await res.json().catch(() => ({}))) as {
@@ -75,6 +76,23 @@ export default function EmailSignupForm({
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
+      {/* Honeypot — invisible to humans, bots auto-fill it. */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          width: 1,
+          height: 1,
+          opacity: 0,
+        }}
+      />
       <div className="flex flex-col sm:flex-row gap-2">
         <input
           type="email"

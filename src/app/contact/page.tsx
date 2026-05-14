@@ -74,6 +74,7 @@ export default function ContactPage() {
     email: "",
     inquiryType: "",
     message: "",
+    website: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -281,6 +282,7 @@ export default function ContactPage() {
                           email: "",
                           inquiryType: "",
                           message: "",
+                          website: "",
                         });
                       }}
                       className="mt-6 btn btn-secondary"
@@ -290,6 +292,23 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Honeypot — invisible to humans, bots auto-fill it. */}
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      value={formData.website}
+                      onChange={handleChange}
+                      style={{
+                        position: "absolute",
+                        left: "-9999px",
+                        width: 1,
+                        height: 1,
+                        opacity: 0,
+                      }}
+                    />
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label

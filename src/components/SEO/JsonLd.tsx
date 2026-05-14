@@ -5,7 +5,7 @@ export function PersonJsonLd() {
     name: "Ishi",
     alternateName: "StyleWithIshi",
     url: "https://stylewithishi.com",
-    image: "https://stylewithishi.com/images/ishi-profile.jpg",
+    image: "https://stylewithishi.com/images/ishi-portrait.jpg",
     jobTitle: "Fashion Curator & Personal Stylist",
     description:
       "Curator of independent designer fashion and personal stylist with two decades of experience sourcing one-of-a-kind pieces from around the world.",
@@ -45,7 +45,7 @@ export function LocalBusinessJsonLd() {
       "A globally-curated collection of independent designer pieces and one-on-one styling, by Ishi. Two decades of curation, one-of-a-kind pieces, personal styling included.",
     url: "https://stylewithishi.com",
     logo: "https://stylewithishi.com/images/logo.png",
-    image: "https://stylewithishi.com/images/og-image.jpg",
+    image: "https://stylewithishi.com/images/ishi-portrait-full.jpg",
     email: "isachdev@stylewithishi.com",
     priceRange: "$$$",
     openingHoursSpecification: {
@@ -225,7 +225,7 @@ export function ServiceJsonLd({
         },
       ],
     },
-    image: image || "https://stylewithishi.com/images/og-image.jpg",
+    image: image || "https://stylewithishi.com/images/ishi-portrait-full.jpg",
   };
 
   return (
